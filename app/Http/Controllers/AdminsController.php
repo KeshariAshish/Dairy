@@ -15,8 +15,23 @@ class AdminsController extends Controller
     }
 
     public function store(){
-       request()->validate([
-           
+      $inputs = request()->validate([
+           'name'=>'required',
+           'email'=>'required',
+           'password'=>'required',
+           'home_number'=>'required',
+           'address'=>'required',
+           'locality'=>'required',
+           'city'=>'required',
+           'zip_code'=>'required',
+           'location'=>'required',
+           'is_active'=>'required',
+           'phone'=>'required',
+           'created_by'=>'required',
+           'is_admin'=>'required'
        ]);
+
+      auth()->user()->create($inputs);
+      return back();
     }
 }
