@@ -15,6 +15,7 @@ class AdminsController extends Controller
     }
 
     public function store(){
+
       $inputs = request()->validate([
            'name'=>'required',
            'email'=>'required',
@@ -33,5 +34,6 @@ class AdminsController extends Controller
 
       auth()->user()->create($inputs);
       return back();
+      
     }
 }
