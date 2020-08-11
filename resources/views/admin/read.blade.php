@@ -58,7 +58,7 @@
                     <tr>
                       <td>{{ $user->id }}</td>
                       <td>{{ $user->name }}</td>
-                      <td>{{ auth()->user()->email }}</td>
+                      <td>{{ $user->email }}</td>
                       <td>{{ $user->home_number }}</td>
                       <td>{{ $user->address }}</td>
                       <td>{{ $user->locality }}</td>
