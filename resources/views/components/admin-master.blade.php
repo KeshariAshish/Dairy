@@ -64,7 +64,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="{{route('admin.create')}}">Create Users</a>
-            <a class="collapse-item" href="cards.html">View All Users</a>
+            <a class="collapse-item" href="{{route('admin.read')}}">View All Users</a>
           </div>
         </div>
       </li>
@@ -340,14 +340,6 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Laravel</span>
-          </div>
-        </div>
-      </footer>
       <!-- End of Footer -->
 
     </div>
@@ -379,6 +371,15 @@
       </div>
     </div>
   </div>
+  
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Laravel</span>
+          </div>
+        </div>
+      </footer>
 
   <!-- Bootstrap core JavaScript-->
   <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -389,6 +390,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+
+  @yield('scripts')
 
 </body>
 

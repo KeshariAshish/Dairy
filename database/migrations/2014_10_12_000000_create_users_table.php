@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('location')->nullable();
             $table->boolean('is_active')->default(0);
             $table->integer('phone')->unique()->nullable();
-            $table->integer('phone_verified_at')->nullable(); 
+            $table->integer('phone_verified_at')->timestamps()->nullable(); 
             $table->string('created_by')->nullable();
             $table->boolean('is_admin')->default(0);        
             $table->rememberToken();
