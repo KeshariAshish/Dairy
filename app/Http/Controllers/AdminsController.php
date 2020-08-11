@@ -44,7 +44,7 @@ class AdminsController extends Controller
     }
 
     public function destroy(User $users, Request $request){
-        $users->trashed();
+        $users->delete();
         request()->session()->flash('message', 'User was deleted');
         return back();
     }
