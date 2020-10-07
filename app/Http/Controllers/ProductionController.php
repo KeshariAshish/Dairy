@@ -47,28 +47,55 @@ class ProductionController extends Controller
      */
     public function store(Production $productions,Request $request)
     {
-        $productions = request()->validate([
-            'product_id'=>'required',
-            'slot'=>'required',
-            'quantity'=>'required',
-            'available_quantity'=>'required',
-            'comment'=>'required',
-            'created_by'=>'',
-            'updated_by'=>'',
-            'date'=>'required'
-        ]);
+        $productions = Production::where('slot', '=', 'Morning')->first();
+        if($productions === null){
+            $productions = request()->validate([
+                'product_id'=>'required',
+                'slot'=>'required',
+                'quantity'=>'required',
+                'available_quantity'=>'required',
+                'comment'=>'required',
+                'created_by'=>'',
+                'updated_by'=>'',
+                'date'=>'required'
+            ]);
 
-        Production::create([
-            'product_id'=>          $productions['product_id'],
-            'slot'=>                $productions['slot'],
-            'quantity'=>            $productions['quantity'],
-            'available_quantity'=>  $productions['available_quantity'],
-            'comment'=>             $productions['comment'],
-            'created_by'=>          auth()->user()->name,
-            'updated_by'=>          auth()->user()->name,
-            'date'=>                $productions['date']
-        ]);
+            Production::create([
+                'product_id'=>          $productions['product_id'],
+                'slot'=>                $productions['slot'],
+                'quantity'=>            $productions['quantity'],
+                'available_quantity'=>  $productions['available_quantity'],
+                'comment'=>             $productions['comment'],
+                'created_by'=>          auth()->user()->name,
+                'updated_by'=>          auth()->user()->name,
+                'date'=>                $productions['date']
+            ]);
+            }
 
+            $productions = Production::where('slot', '=', 'Evening')->first();
+            if($productions === null){
+                $productions = request()->validate([
+                    'product_id'=>'required',
+                    'slot'=>'required',
+                    'quantity'=>'required',
+                    'available_quantity'=>'required',
+                    'comment'=>'required',
+                    'created_by'=>'',
+                    'updated_by'=>'',
+                    'date'=>'required'
+                ]);
+
+                Production::create([
+                    'product_id'=>          $productions['product_id'],
+                    'slot'=>                $productions['slot'],
+                    'quantity'=>            $productions['quantity'],
+                    'available_quantity'=>  $productions['available_quantity'],
+                    'comment'=>             $productions['comment'],
+                    'created_by'=>          auth()->user()->name,
+                    'updated_by'=>          auth()->user()->name,
+                    'date'=>                $productions['date']
+                ]);
+            }
         return redirect()->route('production.read');
     }
 
