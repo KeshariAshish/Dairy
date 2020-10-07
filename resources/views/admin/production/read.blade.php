@@ -4,7 +4,7 @@
 
 
     @if(auth()->user()->is_Admin==0)
-        <h1>{{__('admin-master.Order_Histroy')}}</h1>
+        <h1>{{__('admin-master.Order_History')}}</h1>
     @endif
 
     @if(auth()->user()->is_Admin==1)
@@ -33,36 +33,36 @@
         <thead>
             <tr>
               {{-- <th><input type="checkbox" id="options"></th> --}}
-              <th>Id</th>
-              <th>Product ID</th>
-              <th>Slot</th>
-              <th>Quantity</th>
-              <th>Available Quantity</th>
-              <th>Comment</th>
-              <th>Created By</th>
-              <th>Updated By</th>
-              <th>Created At</th>
-              <th>Updated At</th>
+              <th>{{__('admin-master.Id')}}</th>
+              <th>{{__('admin-master.Product_ID')}}</th>
+              <th>{{__('admin-master.slot')}}</th>
+              <th>{{__('admin-master.quantity')}}</th>
+              <th>{{__('admin-master.available_quantity')}}</th>
+              <th>{{__('admin-master.comment')}}</th>
+              <th>{{__('admin-master.created_by')}}</th>
+              <th>{{__('admin-master.updated_by')}}</th>
+              <th>{{__('admin-master.created_at')}}</th>
+              <th>{{__('admin-master.updated_at')}}</th>
                 @if(auth()->user()->is_Admin==1)
-                    <th>Delete</th>
+                    <th>{{__('admin-master.delete')}}</th>
                 @endif
            </tr>
         </thead>
         <tfoot>
             <tr>
                 {{-- <th><input type="checkbox" id="options"></th> --}}
-                <th>Id</th>
-                <th>Product ID</th>
-                <th>Slot</th>
-                <th>Quantity</th>
-                <th>Available Quantity</th>
-                <th>Comment</th>
-                <th>Created By</th>
-                <th>Updated By</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.slot')}}</th>
                 @if(auth()->user()->is_Admin==1)
-                    <th>Delete</th>
+                    <th>{{__('admin-master.delete')}}</th>
                 @endif
             </tr>
         </tfoot>

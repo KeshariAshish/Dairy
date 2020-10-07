@@ -2,54 +2,54 @@
 
 @section('content')
 
-<h1>Supply</h1>
-@if(Session::has('message'))
-<div class="alert alert-danger">{{session('message')}}</div>
-@endif
+    <h1>{{__('admin-master.Supply')}}</h1>
+    @if(Session::has('message'))
+        <div class="alert alert-danger">{{session('message')}}</div>
+    @endif
 
-<form action="{{route('supply.delete')}}" method="post" class="form-inline">
-  @csrf
-  @method('DELETE')
-  <div class="form-group mr-2">
-    <select class="checkBoxArray[]" id="" class="form-control">
-      <option value="delete">Delete</option>
-    </select>
-  </div>
+    <form action="{{route('supply.delete')}}" method="post" class="form-inline">
+    @csrf
+    @method('DELETE')
+    <div class="form-group mr-2">
+        <select class="checkBoxArray[]" id="" class="form-control">
+        <option value="delete">{{__('admin-master.delete')}}</option>
+        </select>
+    </div>
 
   <div class="form-group">
-    <input type="submit" class="btn-primary">
+    <input type="submit" class="btn-primary" value="{{__('admin-master.submit')}}">
   </div>
 
   <table class="table table-bordered mt-4" id="dataTable" width="100%" cellspacing="0">
     <thead>
       <tr>
         <th><input type="checkbox" id="options"></th>
-        <th>Id</th>
-        <th>User Name</th>
-        <th>Product </th>
-        <th>Date</th>
-        <th>Slot</th>
-        <th>Quantity</th>
-        <th>Created By</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-        <th>Delete</th>             
+        <th>{{__('admin-master.Id')}}</th>
+        <th>{{__('admin-master.customer_name')}}</th>
+        <th>{{__('admin-master.product_name')}} </th>
+        <th>{{__('admin-master.date')}}</th>
+        <th>{{__('admin-master.slot')}}</th>
+        <th>{{__('admin-master.quantity')}}</th>
+        <th>{{__('admin-master.created_by')}}</th>
+        <th>{{__('admin-master.created_at')}}</th>
+        <th>{{__('admin-master.updated_at')}}</th>
+        <th>{{__('admin-master.delete')}}</th>
       </tr>
     </thead>
-    
+
     <tfoot>
       <tr>
         <th><input type="checkbox" id="options"></th>
-        <th>Id</th>
-        <th>User Name</th>
-        <th>Product Name</th>
-        <th>Date</th>
-        <th>Slot</th>
-        <th>Quantity</th>
-        <th>Created By</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-        <th>Delete</th>
+        <th>{{__('admin-master.Id')}}</th>
+        <th>{{__('admin-master.customer_name')}}</th>
+        <th>{{__('admin-master.product_name')}} </th>
+        <th>{{__('admin-master.date')}}</th>
+        <th>{{__('admin-master.slot')}}</th>
+        <th>{{__('admin-master.quantity')}}</th>
+        <th>{{__('admin-master.created_by')}}</th>
+        <th>{{__('admin-master.created_at')}}</th>
+        <th>{{__('admin-master.updated_at')}}</th>
+        <th>{{__('admin-master.delete')}}</th>
       </tr>
     </tfoot>
     <tbody>
@@ -66,18 +66,18 @@
           <td>{{ $supply->created_by }}</td>
           <td>{{ $supply->created_at->diffForHumans()}}</td>
           <td>{{ $supply->updated_at->diffForHumans() }}</td>
-          <td>           
+          <td>
             <form action="{{route('supply.destroy', $supply->id)}}" method="post">
               @csrf
               @method('DELETE')
-              <button class="btn btn-danger" type="submit">DELETE</button>
+            <button class="btn btn-danger" type="submit">{{__('admin-master_delete')}}</button>
             </form>
           </td>
         </tr>
        @endforeach
     </tbody>
   </table>
-</from>
+</form>
 @endsection
 
 @section('scripts')
@@ -104,7 +104,7 @@
         }
 
     });
-   
+
   });
 </script>
 @endsection

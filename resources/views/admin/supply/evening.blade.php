@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Evening Supply</h1>
+<h1>{{__('admin-master.Evening_Supply')}}</h1>
 @if(Session::has('message'))
 <div class="alert alert-danger">{{session('message')}}</div>
 @endif
@@ -17,7 +17,7 @@
   </div>
 
   <div class="form-group">
-    <input type="submit" class="btn-primary">
+     <input type="submit" class="btn-primary" value="{{__('admin-master.submit')}}">
   </div>
 
     <div class="table table-editable table-responsive">
@@ -26,26 +26,26 @@
         <thead>
           <tr>
             <th><input type="checkbox" id="options"></th>
-            <th>Id</th>
-            <th>User Name</th>
-            <th>Product Name</th>
-            <th>Date</th>
-            <th>Slot</th>
-            <th>Quantity</th>
+            <th>{{__('admin-master.Id')}}</th>
+            <th>{{__('admin-master.customer_name')}}</th>
+            <th>{{__('admin-master.product_name')}}</th>
+            <th>{{__('admin-master.date')}}</th>
+            <th>{{__('admin-master.slot')}}</th>
+            <th>{{__('admin-master.quantity')}}</th>
             <!-- <th>Delete</th>
             <th>Update</th>             -->
         </tr>
       </thead>
-    
+
       <tfoot>
         <tr>
           <th><input type="checkbox" id="options"></th>
-          <th>Id</th>
-          <th>User Name</th>
-          <th>Product Name</th>
-          <th>Date</th>
-          <th>Slot</th>
-          <th>Quantity</th>
+          <th>{{__('admin-master.Id')}}</th>
+          <th>{{__('admin-master.customer_name')}}</th>
+          <th>{{__('admin-master.product_name')}}</th>
+          <th>{{__('admin-master.date')}}</th>
+          <th>{{__('admin-master.slot')}}</th>
+          <th>{{__('admin-master.quantity')}}</th>
           <!-- <th>Delete</th>
           <th>Update</th> -->
         </tr>
@@ -53,7 +53,7 @@
       <tbody>
 
         @foreach($supplies as $supply)
-     
+
           <tr>
             <td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" id="{{$supply->id}}" value="{{$supply->id}}"></td>
             <td><a href="{{route('supply.edit', $supply->id)}}">{{ $supply->id }}</a></td>
@@ -62,14 +62,14 @@
             <td><input class="checkBoxes"  type="text" name="checkBoxArray[]" id="{{$supply->product_date}}" value="{{$supply->date}}"></td>
             <td><input class="checkBoxes"  type="text" name="checkBoxArray[]" id="{{$supply->product_slot}}" value="{{$supply->slot}}"></td>
             <td><input class="checkBoxes"  type="text" name="checkBoxArray[]" id="{{$supply->product_quantity}}" value="{{$supply->quantity}}"></td>
-            <!-- <td>           
+            <!-- <td>
               <form action="{{route('supply.destroy', $supply->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger" type="submit">DELETE</button>
               </form>
             </td>
-            <td>           
+            <td>
               <form action="{{route('supply.update', $supply->id)}}" method="post">
                 @csrf
                 @method('PATCH')
@@ -79,7 +79,7 @@
           </tr>
         @endforeach
       </tbody>
-    </table>  
+    </table>
   </div>
 </from>
 @endsection
@@ -108,7 +108,7 @@
         }
 
     });
-   
+
   });
 </script>
 @endsection

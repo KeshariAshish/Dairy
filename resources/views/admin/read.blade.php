@@ -23,43 +23,43 @@
         <thead>
           <tr>
             <th><input type="checkbox" id="options"></th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Home Number</th>
-            <th>Address</th>
-            <th>Locality</th>
-            <th>City</th>
-            <th>Zip Code</th>
-            <th>Location</th>
-            <th>Is Active</th>
-            <th>Phone</th>
-            <th>Created By</th>
-            <th>Is Admin</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Delete</th>
+            <th>{{__('admin-master.Id')}}</th>
+            <th>{{__('admin-master.name')}}</th>
+            <th>{{__('admin-master.email')}}</th>
+            <th>{{__('admin-master.home_number')}}</th>
+            <th>{{__('admin-master.address')}}</th>
+            <th>{{__('admin-master.locality')}}</th>
+            <th>{{__('admin-master.city')}}</th>
+            <th>{{__('admin-master.zip_code')}}</th>
+            <th>{{__('admin-master.location')}}</th>
+            <th>{{__('admin-master.is_active')}}</th>
+            <th>{{__('admin-master.phone')}}</th>
+            <th>{{__('admin-master.created_by')}}</th>
+            <th>{{__('admin-master.is_admin')}}</th>
+            <th>{{__('admin-master.created_at')}}</th>
+            <th>{{__('admin-master.updated_at')}}</th>
+            <th>{{__('admin-master.delete')}}</th>
           </tr>
         </thead>
         <tfoot>
           <tr>
             <th><input type="checkbox" id="options"></th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Home Number</th>
-            <th>Address</th>
-            <th>Locality</th>
-            <th>City</th>
-            <th>Zip Code</th>
-            <th>Location</th>
-            <th>Is Active</th>
-            <th>Phone</th>
-            <th>Created By</th>
-            <th>Is Admin</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Delete</th>
+            <th>{{__('admin-master.Id')}}</th>
+            <th>{{__('admin-master.name')}}</th>
+            <th>{{__('admin-master.email')}}</th>
+            <th>{{__('admin-master.home_number')}}</th>
+            <th>{{__('admin-master.address')}}</th>
+            <th>{{__('admin-master.locality')}}</th>
+            <th>{{__('admin-master.city')}}</th>
+            <th>{{__('admin-master.zip_code')}}</th>
+            <th>{{__('admin-master.location')}}</th>
+            <th>{{__('admin-master.is_active')}}</th>
+            <th>{{__('admin-master.phone')}}</th>
+            <th>{{__('admin-master.created_by')}}</th>
+            <th>{{__('admin-master.is_admin')}}</th>
+            <th>{{__('admin-master.created_at')}}</th>
+            <th>{{__('admin-master.updated_at')}}</th>
+            <th>{{__('admin-master.delete')}}</th>
           </tr>
         </tfoot>
         <tbody>

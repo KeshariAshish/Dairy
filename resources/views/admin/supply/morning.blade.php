@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Morning Supply</h1>
+<h1>{{__('admin-master.Morning_Supply')}}</h1>
 @if(Session::has('message'))
 <div class="alert alert-danger">{{session('message')}}</div>
 @endif
@@ -17,32 +17,32 @@
   </div>
 
   <div class="form-group">
-    <input type="submit" class="btn-primary">
+    <input type="submit" class="btn-primary" value="{{__('admin-master.submit')}}">
   </div>
     <div class="table table-editable table-responsive">
   <table class="table table-bordered mt-4" id="dataTable" width="100%" cellspacing="0">
     <thead>
       <tr>
         <th><input type="checkbox" id="options"></th>
-        <th>Id</th>
-        <th>User Name</th>
-        <th>Product Name</th>
-        <th>Date</th>
-        <th>Slot</th>
-        <th>Quantity</th>
+        <th>{{__('admin-master.Id')}}</th>
+        <th>{{__('admin-master.customer_name')}}</th>
+        <th>{{__('admin-master.product_name')}}</th>
+        <th>{{__('admin-master.date')}}</th>
+        <th>{{__('admin-master.slot')}}</th>
+        <th>{{__('admin-master.quantity')}}</th>
         <!-- <th>Delete</th>              -->
       </tr>
     </thead>
-    
+
     <tfoot>
       <tr>
         <th><input type="checkbox" id="options"></th>
-        <th>Id</th>
-        <th>User Name</th>
-        <th>Product Name</th>
-        <th>Date</th>
-        <th>Slot</th>
-        <th>Quantity</th>
+        <th>{{__('admin-master.Id')}}</th>
+        <th>{{__('admin-master.customer_name')}}</th>
+        <th>{{__('admin-master.product_name')}}</th>
+        <th>{{__('admin-master.date')}}</th>
+        <th>{{__('admin-master.slot')}}</th>
+        <th>{{__('admin-master.quantity')}}</th>
         <!-- <th>Delete</th> -->
       </tr>
     </tfoot>
@@ -57,7 +57,7 @@
           <td class="pt-3-half" contenteditable="true" name="date" id="date">{{ $supply->date }}</td>
           <td>{{ $supply->slot }}</td>
           <td class="pt-3-half" contenteditable="true" name="quantity" id="quantity">{{ $supply->quantity }}</td>
-          <!-- <td>           
+          <!-- <td>
             <form action="{{route('supply.destroy', $supply->id)}}" method="post">
               @csrf
               @method('DELETE')
@@ -96,7 +96,7 @@
         }
 
     });
-   
+
   });
 </script>
 @endsection

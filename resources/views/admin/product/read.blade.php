@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Products</h1>
+<h1>{{__('admin-master.see_products')}}</h1>
 @if(Session::has('message'))
 <div class="alert alert-danger">{{session('message')}}</div>
 @endif
@@ -12,12 +12,12 @@
   @method('DELETE')
   <div class="form-group mr-2">
     <select class="checkBoxArray[]" id="" class="form-control">
-      <option value="delete">Delete</option>
+      <option value="delete">{{__('admin-master.delete')}}</option>
     </select>
   </div>
 
   <div class="form-group">
-    <input type="submit" class="btn-primary">
+    <input type="submit" class="btn-primary" value="{{__('admin-master.delete')}}">
   </div>
 
   <div class="table table-responsive">
@@ -25,29 +25,29 @@
     <thead>
         <tr>
           <th><input type="checkbox" id="options"></th>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Unit</th>
-          <th>Is Active</th>
-          <th>Customer Name</th>
-          <th>Created At</th>
-          <th>Updated At</th>
-         <th>Delete</th>
+          <th>{{__('admin-master.Id')}}</th>
+          <th>{{__('admin-master.name')}}</th>
+          <th>{{__('admin-master.price')}}</th>
+          <th>{{__('admin-master.unit')}}</th>
+          <th>{{__('admin-master.active_customer')}}</th>
+          <th>{{__('admin-master.customer_name')}}</th>
+          <th>{{__('admin-master.create_at')}}</th>
+          <th>{{__('admin-master.updated_at')}}</th>
+         <th>{{__('admin-master.delete')}}</th>
        </tr>
     </thead>
     <tfoot>
       <tr>
         <th><input type="checkbox" id="options"></th>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Unit</th>
-        <th>Is Active</th>
-        <th>Customer Name</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-        <th>Delete</th>
+        <th>{{__('admin-master.Id')}}</th>
+        <th>{{__('admin-master.name')}}</th>
+        <th>{{__('admin-master.price')}}</th>
+        <th>{{__('admin-master.unit')}}</th>
+        <th>{{__('admin-master.active_customer')}}</th>
+        <th>{{__('admin-master.customer_name')}}</th>
+        <th>{{__('admin-master.create_at')}}</th>
+        <th>{{__('admin-master.updated_at')}}</th>
+        <th>{{__('admin-master.delete')}}</th>
       </tr>
     </tfoot>
     <tbody>
@@ -66,7 +66,7 @@
             <form action="{{route('product.destroy', $product->id)}}" method="post">
               @csrf
               @method('DELETE')
-              <button class="btn btn-danger" type="submit">DELETE</button>
+              <button class="btn btn-danger" type="submit">{{__('admin-master.delete')}}</button>
             </form>
           </td>
         </tr>
