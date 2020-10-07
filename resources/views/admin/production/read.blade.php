@@ -34,15 +34,15 @@
             <tr>
               {{-- <th><input type="checkbox" id="options"></th> --}}
               <th>{{__('admin-master.Id')}}</th>
-              <th>{{__('admin-master.Product_ID')}}</th>
+              <th>{{__('admin-master.product_name')}}</th>
               <th>{{__('admin-master.slot')}}</th>
               <th>{{__('admin-master.quantity')}}</th>
               <th>{{__('admin-master.available_quantity')}}</th>
               <th>{{__('admin-master.comment')}}</th>
               <th>{{__('admin-master.created_by')}}</th>
-              <th>{{__('admin-master.updated_by')}}</th>
+              {{-- <th>{{__('admin-master.updated_by')}}</th> --}}
               <th>{{__('admin-master.created_at')}}</th>
-              <th>{{__('admin-master.updated_at')}}</th>
+              {{-- <th>{{__('admin-master.updated_at')}}</th> --}}
                 @if(auth()->user()->is_Admin==1)
                     <th>{{__('admin-master.delete')}}</th>
                 @endif
@@ -51,16 +51,16 @@
         <tfoot>
             <tr>
                 {{-- <th><input type="checkbox" id="options"></th> --}}
+                <th>{{__('admin-master.Id')}}</th>
+                <th>{{__('admin-master.product_name')}}</th>
                 <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
-                <th>{{__('admin-master.slot')}}</th>
+                <th>{{__('admin-master.quantity')}}</th>
+                <th>{{__('admin-master.available_quantity')}}</th>
+                <th>{{__('admin-master.comment')}}</th>
+                <th>{{__('admin-master.created_by')}}</th>
+                {{-- <th>{{__('admin-master.slot')}}</th> --}}
+                <th>{{__('admin-master.created_at')}}</th>
+                {{-- <th>{{__('admin-master.slot')}}</th> --}}
                 @if(auth()->user()->is_Admin==1)
                     <th>{{__('admin-master.delete')}}</th>
                 @endif
@@ -77,15 +77,15 @@
                     @if(auth()->user()->is_Admin==0)
                         <td>{{ $production->id }}</td>
                     @endif
-                    <td>{{ $production->product_id }}</td>
+                    <td>{{ $production->product_name }}</td>
                     <td>{{ $production->slot }}</td>
                     <td>{{ $production->quantity }}</td>
                     <td>{{ $production->available_quantity }}</td>
                     <td>{{ $production->comment }}</td>
                     <td>{{ $production->created_by }}</td>
-                    <td>{{ $production->updated_by}}</td>
-                    <td>{{ $production->created_at->diffForHumans()}}</td>
-                    <td>{{ $production->updated_at->diffForHumans() }}</td>
+                    {{-- <td>{{ $production->updated_by}}</td> --}}
+                    <td>{{ $production->created_at }}</td>
+                    {{-- <td>{{ $production->updated_at->diffForHumans() }}</td> --}}
                     <td>
                     @if(auth()->user()->is_Admin==1)
                         <form action="{{route('production.destroy', $production->id) }}" method="post">

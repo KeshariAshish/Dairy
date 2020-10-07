@@ -32,7 +32,7 @@
             <th>{{__('admin-master.city')}}</th>
             <th>{{__('admin-master.zip_code')}}</th>
             <th>{{__('admin-master.location')}}</th>
-            <th>{{__('admin-master.is_active')}}</th>
+            <th>{{__('admin-master.active_customer')}}</th>
             <th>{{__('admin-master.phone')}}</th>
             <th>{{__('admin-master.created_by')}}</th>
             <th>{{__('admin-master.is_admin')}}</th>
@@ -53,7 +53,7 @@
             <th>{{__('admin-master.city')}}</th>
             <th>{{__('admin-master.zip_code')}}</th>
             <th>{{__('admin-master.location')}}</th>
-            <th>{{__('admin-master.is_active')}}</th>
+            <th>{{__('admin-master.active_customer')}}</th>
             <th>{{__('admin-master.phone')}}</th>
             <th>{{__('admin-master.created_by')}}</th>
             <th>{{__('admin-master.is_admin')}}</th>
@@ -79,13 +79,13 @@
             <td>{{ $user->phone }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->is_Admin }}</td>
-            <td>{{ $user->created_at->diffForHumans()}}</td>
-            <td>{{ $user->updated_at->diffForHumans() }}</td>
+            <td>{{ $user->created_at }}</td>
+            <td>{{ $user->updated_at }}</td>
             <td>
               <form action="{{route('admin.destroy', $user->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger" type="submit">DELETE</button>
+              <button class="btn btn-danger" type="submit">{{__('admin-master.delete')}}</button>
               </form>
             </td>
           </tr>

@@ -28,10 +28,10 @@
           <th>{{__('admin-master.Id')}}</th>
           <th>{{__('admin-master.name')}}</th>
           <th>{{__('admin-master.price')}}</th>
-          <th>{{__('admin-master.unit')}}</th>
+          <th>{{__('admin-master.product_unit')}}</th>
           <th>{{__('admin-master.active_customer')}}</th>
           <th>{{__('admin-master.customer_name')}}</th>
-          <th>{{__('admin-master.create_at')}}</th>
+          <th>{{__('admin-master.created_at')}}</th>
           <th>{{__('admin-master.updated_at')}}</th>
          <th>{{__('admin-master.delete')}}</th>
        </tr>
@@ -42,10 +42,10 @@
         <th>{{__('admin-master.Id')}}</th>
         <th>{{__('admin-master.name')}}</th>
         <th>{{__('admin-master.price')}}</th>
-        <th>{{__('admin-master.unit')}}</th>
+        <th>{{__('admin-master.product_unit')}}</th>
         <th>{{__('admin-master.active_customer')}}</th>
         <th>{{__('admin-master.customer_name')}}</th>
-        <th>{{__('admin-master.create_at')}}</th>
+        <th>{{__('admin-master.created_at')}}</th>
         <th>{{__('admin-master.updated_at')}}</th>
         <th>{{__('admin-master.delete')}}</th>
       </tr>
@@ -60,8 +60,8 @@
           <td>{{ $product->unit }}</td>
           <td>{{ $product->is_active }}</td>
           <td>{{$product->user_name}}</td>
-          <td>{{ $product->created_at->diffForHumans()}}</td>
-          <td>{{ $product->updated_at->diffForHumans() }}</td>
+          <td>{{ $product->created_at }}</td>
+          <td>{{ $product->updated_at }}</td>
           <td>
             <form action="{{route('product.destroy', $product->id)}}" method="post">
               @csrf

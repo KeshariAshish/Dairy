@@ -42,7 +42,7 @@
     </select>
 </div>
 
-<button class="btn btn-danger" type="submit">{{__('admin-master.create')}}</button>
+<button class="btn btn-primary" type="submit">{{__('admin-master.create')}}</button>
 </div>
 </form>
 </div>

@@ -77,10 +77,10 @@ Route::delete('/admin/supply/read/{supply}/destroy', 'SupplyController@destroy')
 Route::get('/admin/supply/edit/{id}' , 'SupplyController@edit')->name('supply.edit');
 Route::patch('/admin/supply/update/{id}' , 'SupplyController@update')->name('supply.update');
 Route::delete('/admin/supply/delete', 'SupplyController@deleteSupply')->name('supply.delete');
-Route::get('/admin/supply/morning', 'SupplyController@slotMorning')->name('supply.morning');
-Route::patch('/admin/supply/morning/update', 'SupplyController@updateMorningSupply')->name('supply.update');
-Route::get('/admin/supply/evening', 'SupplyController@slotEvening')->name('supply.evening');
-Route::patch('/admin/supply/evening', 'SupplyController@updateEveningSupply')->name('supply.evening');
+// Route::get('/admin/supply/morning', 'SupplyController@slotMorning')->name('supply.morning');
+// Route::patch('/admin/supply/morning/update', 'SupplyController@updateMorningSupply')->name('supply.update');
+// Route::get('/admin/supply/evening', 'SupplyController@slotEvening')->name('supply.evening');
+// Route::patch('/admin/supply/evening', 'SupplyController@updateEveningSupply')->name('supply.evening');
 
 
 

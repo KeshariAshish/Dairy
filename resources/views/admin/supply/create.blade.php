@@ -30,14 +30,22 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="slot">{{__('admin-master.slot')}}</label>
-                <input type="text" name="slot" id="slot" class="form-control" placeholder="{{__('admin-master.enter_slot')}}">
+            <div class="mb-3">
+                <h6>{{__('admin-master.slot')}}</h6>
+                <input type="radio" id="slot" name="slot" value="Morning">
+                <label for="slot">Morning</label>
+                <input type="radio" id="slot" name="slot" value="Evening">
+                <label for="slot">Evening</label>
+                {{-- <select class="form-control" id="slot" name="slot" required>
+                    <option value="Morning" selected>Morning</option>
+                    <option value="Evening">Evening</option>
+                </select> --}}
             </div>
+
 
             <div class="form-group">
                 <label for="date">{{__('admin-master.date')}}</label>
-                <input type="date" name="date" id="date" class="form-control" placeholder="{{__('admin-master.enter_date')}}">
+                <input type="date" name="date" id="date" class="form-control" placeholder="{{__('admin-master.enter_date')}}" value="{{date('Y-m-d')}}">
             </div>
 
             <div class="form-group">
@@ -45,9 +53,19 @@
                 <input type="text" name="quantity" id="quantity" class="form-control" placeholder="{{__('admin-master.enter_quantity')}}">
             </div>
 
-            <button class="btn btn-danger" type="submit">{{__('admin-master.create')}}</button>
+            <button class="btn btn-primary" type="submit">{{__('admin-master.create')}}</button>
 
         </form>
     </div>
 @endsection
+<script>
+    $(function(){
+
+        $('#date').datepicker({
+            format: 'mm-dd-yyyy',
+            endDate: '+0d',
+            autoclose: true
+        });
+    });
+</script>
 </x-admin-master>

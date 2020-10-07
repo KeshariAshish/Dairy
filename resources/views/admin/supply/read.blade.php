@@ -64,13 +64,13 @@
           <td>{{ $supply->slot }}</td>
           <td>{{ $supply->quantity }}</td>
           <td>{{ $supply->created_by }}</td>
-          <td>{{ $supply->created_at->diffForHumans()}}</td>
-          <td>{{ $supply->updated_at->diffForHumans() }}</td>
+          <td>{{ $supply->created_at }}</td>
+          <td>{{ $supply->updated_at }}</td>
           <td>
             <form action="{{route('supply.destroy', $supply->id)}}" method="post">
               @csrf
               @method('DELETE')
-            <button class="btn btn-danger" type="submit">{{__('admin-master_delete')}}</button>
+            <button class="btn btn-danger" type="submit">{{__('admin-master.delete')}}</button>
             </form>
           </td>
         </tr>

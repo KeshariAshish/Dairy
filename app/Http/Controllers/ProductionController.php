@@ -21,7 +21,9 @@ class ProductionController extends Controller
     public function index(Production $productions)
     {
         $products = Product::all();
-        $productions = Production::all();
+        $productions = Production::select('productions.*','products.name as product_name' )
+        ->join('products', 'products.id', '=', 'productions.product_id')
+        ->get();;
         return view('admin.production.read',['productions'=> $productions, 'products'=> $products]);
     }
 
@@ -51,19 +53,19 @@ class ProductionController extends Controller
             'quantity'=>'required',
             'available_quantity'=>'required',
             'comment'=>'required',
-            'created_by'=>'required',
-            'updated_by'=>'required',
+            'created_by'=>'',
+            'updated_by'=>'',
             'date'=>'required'
         ]);
 
         Production::create([
-             'product_id'=>         $productions['product_id'],
+            'product_id'=>          $productions['product_id'],
             'slot'=>                $productions['slot'],
             'quantity'=>            $productions['quantity'],
             'available_quantity'=>  $productions['available_quantity'],
             'comment'=>             $productions['comment'],
-            'created_by'=>          $productions['created_by'],
-            'updated_by'=>          $productions['updated_by'],
+            'created_by'=>          auth()->user()->name,
+            'updated_by'=>          auth()->user()->name,
             'date'=>                $productions['date']
         ]);
 
@@ -106,7 +108,8 @@ class ProductionController extends Controller
         $inputs = request()->validate([
             'slot'=>'',
             'quantity'=>'',
-            'available_quantity'=>''
+            'available_quantity'=>'',
+            'updated_by'=>''
             // 'is_active'=>'',
             // 'user_id'=>''
         ]);
@@ -116,6 +119,7 @@ class ProductionController extends Controller
         $productions->slot = $inputs['slot'];
         $productions->quantity = $inputs['quantity'];
         $productions->available_quantity = $inputs['available_quantity'];
+        $productions->updated_by = auth()->user()->name;
 
        // dd($inputs);
         $productions->update();

@@ -43,7 +43,7 @@ class ProductsController extends Controller
             'name'=>'required',
             'price'=>'required',
             'unit'=>'required',
-            'user_id'=>''
+            'user_id'=>'',
         ]);
 
         // Product::create([

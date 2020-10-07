@@ -46,7 +46,7 @@ class SupplyController extends Controller
             'date'=>'',
             'slot'=>'',
             'quantity'=>'',
-           // 'created_by'=>''
+            'created_by'=>''
         ]);
 
 
@@ -56,7 +56,7 @@ class SupplyController extends Controller
         $supply->date = $data['date'];
         $supply->slot = $data['slot'];
         $supply->quantity = $data['quantity'];
-       // $supply->created_by = $data['created_by'];
+        $supply->created_by = auth()->user()->name;
 
         $supply->save();
 

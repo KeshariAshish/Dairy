@@ -37,7 +37,7 @@ return [
     'comment'=>'Comment',
     'created_by'=>'Created by',
     'updated_by'=>'Updated by',
-    'created_at'=>'Create At',
+    'created_at'=>'Created At',
     'updated_at'=>'Updated At',
     'delete'=>'Delete',
     'date'=>'Date',
