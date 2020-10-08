@@ -47,7 +47,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('production.read')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>{{__('admin-master.Order_History')}}</span></a>
+                <span>{{__('admin-master.Order_Histroy')}}</span></a>
             </li>
         @endif
         <!-- Divider -->

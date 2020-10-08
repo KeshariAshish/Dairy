@@ -4,7 +4,7 @@
 
 
     @if(auth()->user()->is_Admin==0)
-        <h1>{{__('admin-master.Order_History')}}</h1>
+        <h1>{{__('admin-master.Order_Histroy')}}</h1>
     @endif
 
     @if(auth()->user()->is_Admin==1)
@@ -35,6 +35,7 @@
               {{-- <th><input type="checkbox" id="options"></th> --}}
               <th>{{__('admin-master.Id')}}</th>
               <th>{{__('admin-master.product_name')}}</th>
+              <th>Date</th>
               <th>{{__('admin-master.slot')}}</th>
               <th>{{__('admin-master.quantity')}}</th>
               <th>{{__('admin-master.available_quantity')}}</th>
@@ -53,6 +54,7 @@
                 {{-- <th><input type="checkbox" id="options"></th> --}}
                 <th>{{__('admin-master.Id')}}</th>
                 <th>{{__('admin-master.product_name')}}</th>
+                <th>Date</th>
                 <th>{{__('admin-master.slot')}}</th>
                 <th>{{__('admin-master.quantity')}}</th>
                 <th>{{__('admin-master.available_quantity')}}</th>
@@ -78,13 +80,14 @@
                         <td>{{ $production->id }}</td>
                     @endif
                     <td>{{ $production->product_name }}</td>
+                    <td>{{ $production->date->format(date('d-m-Y')) }}</td>
                     <td>{{ $production->slot }}</td>
                     <td>{{ $production->quantity }}</td>
                     <td>{{ $production->available_quantity }}</td>
                     <td>{{ $production->comment }}</td>
                     <td>{{ $production->created_by }}</td>
                     {{-- <td>{{ $production->updated_by}}</td> --}}
-                    <td>{{ $production->created_at }}</td>
+                    <td>{{ $production->created_at->format(date('d-m-Y')) }}</td>
                     {{-- <td>{{ $production->updated_at->diffForHumans() }}</td> --}}
                     <td>
                     @if(auth()->user()->is_Admin==1)

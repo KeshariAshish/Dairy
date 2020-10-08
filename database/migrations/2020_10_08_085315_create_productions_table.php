@@ -20,8 +20,10 @@ class CreateProductionsTable extends Migration
             $table->float('quantity')->default(0)->nullable();
             $table->float('available_quantity')->default(0)->nullable();
             $table->text('comment');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->index('created_by');
+            $table->foreignId('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->index('updated_by');
+            $table->foreignId('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->date('date');
             $table->timestamps();
 

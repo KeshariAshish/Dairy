@@ -16,4 +16,5 @@ class Production extends Model
         'updated_by',
         'date'
     ];
+    protected $dates = ['date'];
 }
