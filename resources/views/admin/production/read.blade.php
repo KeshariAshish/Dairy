@@ -35,7 +35,7 @@
               {{-- <th><input type="checkbox" id="options"></th> --}}
               <th>{{__('admin-master.Id')}}</th>
               <th>{{__('admin-master.product_name')}}</th>
-              <th>Date</th>
+              <th>{{__('admin-master.date')}}</th>
               <th>{{__('admin-master.slot')}}</th>
               <th>{{__('admin-master.quantity')}}</th>
               <th>{{__('admin-master.available_quantity')}}</th>
@@ -54,7 +54,7 @@
                 {{-- <th><input type="checkbox" id="options"></th> --}}
                 <th>{{__('admin-master.Id')}}</th>
                 <th>{{__('admin-master.product_name')}}</th>
-                <th>Date</th>
+                <th>{{__('admin-master.date')}}</th>
                 <th>{{__('admin-master.slot')}}</th>
                 <th>{{__('admin-master.quantity')}}</th>
                 <th>{{__('admin-master.available_quantity')}}</th>

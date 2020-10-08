@@ -60,8 +60,8 @@
           <td>{{ $product->unit }}</td>
           <td>{{ $product->is_active }}</td>
           <td>{{$product->user_name}}</td>
-          <td>{{ $product->created_at }}</td>
-          <td>{{ $product->updated_at }}</td>
+          <td>{{ $product->created_at->format(date('d-m-Y')) }}</td>
+          <td>{{ $product->updated_at->format(date('d-m-Y')) }}</td>
           <td>
             <form action="{{route('product.destroy', $product->id)}}" method="post">
               @csrf

@@ -64,8 +64,8 @@
           <td>{{ $supply->slot }}</td>
           <td>{{ $supply->quantity }}</td>
           <td>{{ $supply->created_by }}</td>
-          <td>{{ $supply->created_at }}</td>
-          <td>{{ $supply->updated_at }}</td>
+          <td>{{ $supply->created_at->format(date('d-m-Y')) }}</td>
+          <td>{{ $supply->updated_at->format(date('d-m-Y')) }}</td>
           <td>
             <form action="{{route('supply.destroy', $supply->id)}}" method="post">
               @csrf

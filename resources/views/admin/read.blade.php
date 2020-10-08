@@ -79,8 +79,8 @@
             <td>{{ $user->phone }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->is_Admin }}</td>
-            <td>{{ $user->created_at }}</td>
-            <td>{{ $user->updated_at }}</td>
+            <td>{{ $user->created_at->format(date('d-m-Y')) }}</td>
+            <td>{{ $user->updated_at->format(date('d-m-Y')) }}</td>
             <td>
               <form action="{{route('admin.destroy', $user->id)}}" method="post">
                 @csrf
