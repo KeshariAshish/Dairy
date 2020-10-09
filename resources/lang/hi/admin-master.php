@@ -27,8 +27,8 @@ return [
     'Order_History'=>'आदेश इतिहास',
     'You_do_not_have_permission_to_perform_operations'=>'आपको ऑपरेशन करने की अनुमति नहीं है',
     'You_have_permission_to_perform_operations'=>'आपको ऑपरेशन करने की अनुमति है',
-    'We_provide_best_quality_milk_to_our_customers_we_are_going_to_start_subscription_for_our_daily_customers_soon_which_will_help_us_to_maintain_a_good_relationship_between_us'=>'हम अपने ग्राहकों को सर्वोत्तम गुणवत्ता वाला
-    दूध प्रदान करते हैं। हम जल्द ही अपने दैनिक ग्राहकों के लिए सदस्यता शुरू
+    'We_provide_best_quality_products_to_our_customers_we_are_going_to_start_subscription_for_our_daily_customers_soon_which_will_help_us_to_maintain_a_good_relationship_between_us'=>'हम अपने ग्राहकों को सर्वोत्तम गुणवत्ता वाला
+    उत्पाद प्रदान करते हैं। हम जल्द ही अपने दैनिक ग्राहकों के लिए सदस्यता शुरू
     करने जा रहे हैं। जो हमारे बीच एक अच्छा रिश्ता बनाए रखने में मदद करेगा।',
     'Id'=>'पहचान संख्या',
     'Product_ID'=>'उत्पाद की पहचान संख्या',
@@ -43,6 +43,7 @@ return [
     'delete'=>'हटाना',
     'date'=>'तारीख',
     'cancel'=>'रद्द करना',
+    'our_products'=>'हमारे उत्पाद',
 
     //Create User
 

@@ -25,8 +25,8 @@ return [
     'Order_Histroy'=>'Order History',
     'You_do_not_have_permission_to_perform_operations'=>'You do not have permission to perform operations',
     'You_have_permission_to_perform_operations'=>'You have permission to perform operations',
-    'We_provide_best_quality_milk_to_our_customers_we_are_going_to_start_subscription_for_our_daily_customers_soon_which_will_help_us_to_maintain_a_good_relationship_between_us'=>'
-    We provide best quality milk to our customers. We are
+    'We_provide_best_quality_products_to_our_customers_we_are_going_to_start_subscription_for_our_daily_customers_soon_which_will_help_us_to_maintain_a_good_relationship_between_us'=>'
+    We provide best quality Products to our customers. We are
     going to start subscription for our daily customers soon. Which will help us to maintain a
     good relationship between us.',
     'Id'=>'Id',
@@ -42,13 +42,14 @@ return [
     'delete'=>'Delete',
     'date'=>'Date',
     'cancel'=>'Cancel',
+    'our_products'=>'Our Products',
 
     //Create User
 
     'name'=>'Name',
     'email'=>'Email',
     'password'=>'Password',
-    'home_number'=>'Home NUmber',
+    'home_number'=>'Home Number',
     'address'=>'Address',
     'locality'=>'Locality',
     'city'=>'City',

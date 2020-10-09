@@ -46,13 +46,13 @@ h1 {
 	overflow: hidden;
 }
 
-.video-container video {
+.video-container img {
 	min-width: 100%;
 	max-height: 100%;
-  position: absolute;
-	top: 0;
+    position: absolute;
+	top: 20px;
 	left: 0;
-	object-fit: fill; 
+	object-fit: fill;
 }
 
 .video-container:after {
@@ -69,5 +69,35 @@ h1 {
 .content {
 	z-index: 2;
 }
+@media only screen and (max-width: 400px) {
+    .video-container img {
+        width: 400px;
+        height: 500px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        object-fit: fill;
+    }
+    .showcase {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+    }
+    .showcase h1{
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 250px;
+    }
 
+    .showcase h4{
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 1;
+    }
+}
 
