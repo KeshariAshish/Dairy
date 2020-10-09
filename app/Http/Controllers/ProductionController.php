@@ -107,13 +107,16 @@ class ProductionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Product $products)
     {
+        $productions = Production::where('slot', '=', $request->get('slot'))->where('date', '=', $request->get('date'))->first();
+        if($productions === null){
         $inputs = request()->validate([
             'slot'=>'',
             'quantity'=>'',
             'available_quantity'=>'',
-            'updated_by'=>''
+            'updated_by'=>'',
+            'date'=> ''
             // 'is_active'=>'',
             // 'user_id'=>''
         ]);
@@ -123,12 +126,16 @@ class ProductionController extends Controller
         $productions->slot = $inputs['slot'];
         $productions->quantity = $inputs['quantity'];
         $productions->available_quantity = $inputs['available_quantity'];
-        $productions->updated_by = auth()->user()->name;
+        $productions->date = $inputs['date'];
+        $productions->updated_by = auth()->user()->id;
 
        // dd($inputs);
         $productions->update();
+        }
 
-        return view('admin.index',['productions'=>$productions, 'products'=>$products]);
+        // return view('admin.index',['productions'=>$productions, 'products'=>$products]);
+        request()->session()->flash('message', 'Production was updated');
+        return back();
     }
 
     /**
@@ -143,5 +150,6 @@ class ProductionController extends Controller
         $productions->delete();
         request()->session()->flash('message', 'Production was deleted');
         return back();
+
     }
 }

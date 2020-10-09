@@ -3,7 +3,9 @@
     @section('content')
 
         <h1>{{__('admin-master.create_production')}}</h1>
-
+        @if(Session::has('message'))
+            <div class="alert alert-danger">{{session('message')}}</div>
+        @endif
 
         <form action="{{route('production.store')}}" method="post" enctype="multipart/form-data">
             @csrf

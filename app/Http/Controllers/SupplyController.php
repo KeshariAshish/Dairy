@@ -40,25 +40,31 @@ class SupplyController extends Controller
     public function store(Request $request)
     {
          // dd(request()->all());
-         $data = request()->validate([
-            'user_id'=>'',
-            'product_id'=>'',
-            'date'=>'',
-            'slot'=>'',
-            'quantity'=>'',
-            'created_by'=>''
-        ]);
+         $supplies = Supply::where('date', '=', $request->get('date'))->where('slot', '=', $request->get('slot'))->first();
+         if($supplies === null){
+            $supplies = request()->validate([
+                'user_id'=>'',
+                'product_id'=>'',
+                'date'=>'',
+                'slot'=>'',
+                'quantity'=>'',
+                'created_by'=>''
+            ]);
 
 
-        $supply = new Supply;
-        $supply->user_id = $data['user_id'];
-        $supply->product_id = $data['product_id'];
-        $supply->date = $data['date'];
-        $supply->slot = $data['slot'];
-        $supply->quantity = $data['quantity'];
-        $supply->created_by = auth()->user()->name;
+            Supply ::create([
+                'user_id'=> $supplies['user_id'],
+                'product_id'=> $supplies['product_id'],
+                'date'=> $supplies['date'],
+                'slot'=> $supplies['slot'],
+                'quantity'=> $supplies['quantity'],
+                'created_by'=> auth()->user()->name
+            ]);
 
-        $supply->save();
+         }
+
+
+
 
         return redirect()->route('admin.read')->withSuccess("You have created new stock");
     }
