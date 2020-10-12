@@ -152,4 +152,11 @@ class ProductionController extends Controller
         return back();
 
     }
+
+    public function currentMonthProduction(){
+        $productions = Production::all();
+        $users = User::all();
+        DB::table('productions')->get()->sum('quantity')->where('user_id', '=', '');
+        return view('admin.index',['productions'=>$productions, 'users'=>$users]);
+    }
 }

@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->string('unit');
             $table->boolean('is_active')->default(0);
-            $table->bigInteger('user_id')->references('id')->on('users')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

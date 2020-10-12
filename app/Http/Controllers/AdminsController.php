@@ -2,14 +2,32 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Production;
+use App\Invoice;
+use App\Supply;
+use App\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class AdminsController extends Controller
 {
-    public function index(){
-        return view('admin.index');
+    public function index(User $users, Production $productions, Invoice $invoices, Supply $supplies, Product $products){
+        if(auth()->user()->is_Admin==1){
+        $productions = Production::select('productions.*')->where('date', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
+
+        $invoices = Invoice::all();
+        return view('admin.index',['productions'=>$productions,'invoices'=>$invoices]);
+        }else{
+            $productions = Production::select('production.*');
+            $invoices = Invoice::all();
+            $supplies = Supply::select('supplies*')->where('user_id', '=', auth()->user()->id)->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
+            $users = User::all();
+            $invoices = Invoice::select('invoices.*')->where('user_id', '=', auth()->user()->id)->select('price')->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString())->select('due_amount');
+            return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'users'=>$users, 'supplies'=>$supplies, 'products'=>$products]);
+        }
+
     }
 
     public function create(){

@@ -17,4 +17,11 @@ class Production extends Model
         'date'
     ];
     protected $dates = ['date'];
+
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
+
 }
+
+
