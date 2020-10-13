@@ -17,8 +17,14 @@ class AdminsController extends Controller
         if(auth()->user()->is_Admin==1){
         $productions = Production::select('productions.*')->where('date', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
 
+        $users = User::orderBy('id', 'desc')->latest()->limit(2)->get();
         $invoices = Invoice::all();
-        return view('admin.index',['productions'=>$productions,'invoices'=>$invoices]);
+        $supplies = Supply::all();
+        $supplies = Supply::select('supplies.*', 'users.name',  'products.name as product_name')
+                    ->join('users', 'users.id', '=', 'supplies.user_id')
+                    ->join('products', 'products.id', '=', 'supplies.product_id')
+                    ->get();
+        return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'supplies'=>$supplies,'users'=>$users,'products'=>$products]);
         }else{
             $productions = Production::select('production.*');
             $invoices = Invoice::all();
@@ -27,8 +33,14 @@ class AdminsController extends Controller
             $invoices = Invoice::select('invoices.*')->where('user_id', '=', auth()->user()->id)->select('price')->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString())->select('due_amount');
             return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'users'=>$users, 'supplies'=>$supplies, 'products'=>$products]);
         }
-
     }
+
+    // public function charts(User $users, Production $productions, Invoice $invoices, Supply $supplies, Product $products){
+    //     $productions = Production::all();
+    //     if(auth()->user()->is_Admin==1){
+    //         return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'users'=>$users, 'supplies'=>$supplies, 'products'=>$products]);
+    //     }
+    // }
 
     public function create(){
         return view('admin.create');
