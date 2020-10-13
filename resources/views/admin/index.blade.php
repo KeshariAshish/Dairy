@@ -203,6 +203,60 @@
                 </script>
                 <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
             </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <table class="table">
+                        <h1>Recent Orders</h1>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sr#</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Slot</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($supplies as $supply)
+                                <tr>
+                                    <th scope="row">{{ $supply->id }}</th>
+                                    <td>{{ $supply->product_name }}</td>
+                                    <td>{{ $supply->name}}</td>
+                                    <td>{{ $supply->date }}</td>
+                                    <td>{{ $supply->slot }}</td>
+                                    <td>{{ $supply->quantity }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <h1>Latest Customers</h1>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sr#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <th scope="row">{{$user->id}}</th>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->address}}</td>
+                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->created_at->format('d-m-Y')}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         @endif
     @endsection
 </x-admin-master>
