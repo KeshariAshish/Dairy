@@ -49,6 +49,11 @@
       <!-- Nav Item - Dashboard -->
         @if(auth()->user()->is_Admin==0)
             <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.index')}}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{__('admin-master.Dashboard')}}</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('production.read')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>{{__('admin-master.Order_Histroy')}}</span></a>

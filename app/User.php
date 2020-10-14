@@ -55,4 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function productions(){
         return $this->belongsToMany('App\Production');
     }
+    public function supplies(){
+        return $this->belongsTo('App\Supply');
+    }
 }

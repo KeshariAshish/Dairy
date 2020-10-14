@@ -11,36 +11,59 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class AdminsController extends Controller
 {
     public function index(User $users, Production $productions, Invoice $invoices, Supply $supplies, Product $products){
-        if(auth()->user()->is_Admin==1){
-        $productions = Production::select('productions.*')->where('date', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
 
-        $users = User::orderBy('id', 'desc')->latest()->limit(2)->get();
-        $invoices = Invoice::all();
-        $supplies = Supply::all();
-        $supplies = Supply::select('supplies.*', 'users.name',  'products.name as product_name')
-                    ->join('users', 'users.id', '=', 'supplies.user_id')
-                    ->join('products', 'products.id', '=', 'supplies.product_id')
-                    ->get();
-        return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'supplies'=>$supplies,'users'=>$users,'products'=>$products]);
-        }else{
-            $productions = Production::select('production.*');
+        if(auth()->user()->is_Admin==1){
+
+            $productions = Production::select('productions.*')->where('date', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
+
+            $users = User::orderBy('id', 'desc')->latest()->limit(2)->get();
+
             $invoices = Invoice::all();
-            $supplies = Supply::select('supplies*')->where('user_id', '=', auth()->user()->id)->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
-            $users = User::all();
-            $invoices = Invoice::select('invoices.*')->where('user_id', '=', auth()->user()->id)->select('price')->where('created_at', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString())->select('due_amount');
+
+            $supplies = Supply::all();
+
+            $supplies = Supply::select('supplies.*', 'users.name',  'products.name as product_name')
+                        ->join('users', 'users.id', '=', 'supplies.user_id')
+                        ->join('products', 'products.id', '=', 'supplies.product_id')
+                        ->orderBy('supplies.id','desc')
+                        ->whereMonth('supplies.date', '>=', Carbon::now()
+                        ->startOfMonth()->subMonth()->toDateString())
+                        ->latest()->limit(10)
+                        ->get();
+
+            return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'supplies'=>$supplies,'users'=>$users,'products'=>$products]);
+        }
+        else{
+
+            $productions = Production::select('production.*');
+
+            $invoices = Invoice::all();
+
+            $supplies = Supply::select('supplies.*', 'users.name',  'products.name as product_name')
+                        ->join('users', 'users.id', '=', 'supplies.user_id')
+                        ->join('products', 'products.id', '=', 'supplies.product_id')
+                        ->where('supplies.user_id', '=', auth()->user()->id)
+                        ->latest()
+                        ->where('supplies.created_at', '>=', Carbon::now()
+                        ->startOfMonth()->subMonth()->toDateString())
+                        ->limit(10)
+                        ->get();
+
+            $invoices = Invoice::select('invoices.*')
+                        ->where('user_id', '=', auth()->user()->id)
+                        ->select('price')
+                        ->where('created_at', '>=', Carbon::now()
+                        ->startOfMonth()->subMonth()
+                        ->toDateString())
+                        ->latest()->limit(10)
+                        ->select('due_amount');
             return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'users'=>$users, 'supplies'=>$supplies, 'products'=>$products]);
         }
     }
-
-    // public function charts(User $users, Production $productions, Invoice $invoices, Supply $supplies, Product $products){
-    //     $productions = Production::all();
-    //     if(auth()->user()->is_Admin==1){
-    //         return view('admin.index',['productions'=>$productions,'invoices'=>$invoices,'users'=>$users, 'supplies'=>$supplies, 'products'=>$products]);
-    //     }
-    // }
 
     public function create(){
         return view('admin.create');

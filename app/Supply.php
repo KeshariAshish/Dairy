@@ -8,13 +8,14 @@ class Supply extends Model
 {
     protected $fillable = [
         'user_id',
+        'product_id',
         'date',
         'slot',
         'quantity',
         'created_by'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsTo('App\User');
     }
 }

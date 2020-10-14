@@ -78,17 +78,19 @@
 
                     function drawChart() {
                     var data = google.visualization.arrayToDataTable([
-                        ['Year', 'Sales', 'Expenses', 'Profit'],
-                        ['2014', 1000, 400, 200],
-                        ['2015', 1170, 460, 250],
-                        ['2016', 660, 1120, 300],
-                        ['2017', 1030, 540, 350]
+                        ['Day', 'Quanity'],
+                        @php
+                            foreach($supplies as $supply) {
+                                echo "['".$supply->created_at->format('M')."', ".$supply->quantity."],";
+                            }
+                        @endphp
                     ]);
+
 
                     var options = {
                         chart: {
-                        title: 'Company Performance',
-                        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                        title: 'My Purchases Flow',
+                        subtitle: 'Products, Expenses',
                         }
                     };
 
@@ -97,7 +99,34 @@
                     chart.draw(data, google.charts.Bar.convertOptions(options));
                     }
                 </script>
-                <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+                <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <table class="table">
+                        <h1>Recent Supplies</h1>
+                        <thead>
+                            <tr>
+                                <th scope="col">Sr#</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Slot</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($supplies as $supply)
+                                <tr>
+                                    <th scope="row">{{ $supply->id }}</th>
+                                    <td>{{ $supply->product_name }}</td>
+                                    <td>{{ $supply->date }}</td>
+                                    <td>{{ $supply->slot }}</td>
+                                    <td>{{ $supply->quantity }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         @endif
 
