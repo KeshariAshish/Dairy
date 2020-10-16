@@ -61,7 +61,7 @@ class InvoiceController extends Controller
         $users = User::all();
         $products = Product::all();
 
-       $invoices = Invoice::create([
+        Invoice::create([
             'user_id'               =>  $request['user_id'],
             'product_id'            =>  $request['product_id'],
             'total_quantity'        =>  $request['total_quantity'],
@@ -75,7 +75,8 @@ class InvoiceController extends Controller
             'created_by'            =>auth()->user()->id
         ]);
 
-        return redirect()->route('invoice.read',['users'=>$users, 'products'=>$products,'invoices'=>$invoices]);
+        request()->session()->flash('message', 'Invoice was created');
+        return back();
     }
 
     /**
@@ -155,12 +156,12 @@ class InvoiceController extends Controller
     }
 
     public function read(Invoice $invoices){
-        $users = User::all();
-        $products = Product::all();
+
         $invoices = Invoice::select('invoices.*', 'users.name',  'products.name as product_name')
                     ->join('users', 'users.id', '=', 'invoices.user_id')
                     ->join('products', 'products.id', '=', 'invoices.product_id')
                     ->get();
-        return redirect()->route('invoice.read',['users'=>$users, 'producrs'=>$products, 'invoices'=>$invoices]);
+        return view('admin.invoice.read',['invoices'=>$invoices]);
+
     }
 }

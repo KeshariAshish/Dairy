@@ -2,7 +2,9 @@
 <x-admin-master>
 
     @section('content')
-
+        @if(Session::has('message'))
+            <div class="alert alert-success">{{session('message')}}</div>
+        @endif
         <h1>Create Invoice</h1>
 
 
