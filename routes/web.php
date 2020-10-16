@@ -82,7 +82,12 @@ Route::delete('/admin/supply/delete', 'SupplyController@deleteSupply')->name('su
 // Route::get('/admin/supply/evening', 'SupplyController@slotEvening')->name('supply.evening');
 // Route::patch('/admin/supply/evening', 'SupplyController@updateEveningSupply')->name('supply.evening');
 
-
-
+Route::get('/admin/invoice/create', 'InvoiceController@create')->name('invoice.create');
+Route::post('/admin/invoice/store', 'InvoiceController@store')->name('invoice.store');
+Route::get('/admin/invoice/read', 'InvoiceController@read')->name('invoice.read');
+Route::delete('/admin/invoice/read/{invoice}/destroy', 'InvoiceController@destroy')->name('invoice.destroy');
+Route::get('/admin/invoice/edit/{id}' , 'InvoiceController@edit')->name('invoice.edit');
+Route::patch('/admin/invoice/update/{id}' , 'InvoiceController@update')->name('invoice.update');
+// Route::delete('/admin/supply/delete', 'SupplyController@deleteSupply')->name('invoice.delete');
 
 

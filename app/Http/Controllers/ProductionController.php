@@ -49,7 +49,7 @@ class ProductionController extends Controller
     {
         $productions = Production::where('slot', '=', $request->get('slot'))->where('date', '=', $request->get('date'))->first();
         if($productions === null){
-            $productions = request()->validate([
+            $request = request()->validate([
                 'product_id'=>'required',
                 'slot'=>'required',
                 'quantity'=>'required',
@@ -61,19 +61,19 @@ class ProductionController extends Controller
             ]);
 
             Production::create([
-                'product_id'=>          $productions['product_id'],
-                'slot'=>                $productions['slot'],
-                'quantity'=>            $productions['quantity'],
-                'available_quantity'=>  $productions['available_quantity'],
-                'comment'=>             $productions['comment'],
+                'product_id'=>          $request['product_id'],
+                'slot'=>                $request['slot'],
+                'quantity'=>            $request['quantity'],
+                'available_quantity'=>  $request['available_quantity'],
+                'comment'=>             $request['comment'],
                 'created_by'=>          auth()->user()->id,
                 'updated_by'=>          auth()->user()->id,
-                'date'=>                $productions['date']
+                'date'=>                $request['date']
             ]);
             }
 
 
-        return redirect()->route('production.read');
+            return redirect()->route('production.read',['productions'=> $productions]);
     }
 
     /**

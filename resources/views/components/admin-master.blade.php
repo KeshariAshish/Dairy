@@ -172,6 +172,21 @@
 
                 </div>
             </li>
+             <!-- Nav Item - Pages Collapse Menu -->
+             <li class="nav-item ">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#invoice" aria-expanded="true">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Invoice</span>
+                </a>
+                <div id="invoice" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Subscribers:</h6>
+                    <a class="collapse-item" href="{{ route('invoice.create') }}">Create Invoice</a>
+                    <a class="collapse-item" href="{{ route('invoice.read') }}">View Invoices</a>
+
+                </div>
+                </div>
+            </li>
 
         @endif   <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

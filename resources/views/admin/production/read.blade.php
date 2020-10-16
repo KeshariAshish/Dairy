@@ -74,12 +74,9 @@
 
                     <tr>
                         {{-- <td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" id="{{$production->id}}" value="{{$production->id}}"></td> --}}
-                        @if(auth()->user()->is_Admin==1)
-                            <td><a href="{{route('production.edit', $production->id)}}">{{ $production->id }}</a></td>
-                        @endif
-                        @if(auth()->user()->is_Admin==0)
-                            <td>{{ $production->id }}</td>
-                        @endif
+
+
+                        <td>{{ $production->id }}</td>
                         <td>{{ $production->product_name }}</td>
                         <td>{{ $production->date->format(date('d-m-Y')) }}</td>
                         <td>{{ $production->slot }}</td>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    
+
     protected $fillable = [
         'name',
         'price',
@@ -29,6 +29,10 @@ class Product extends Model
 
     public function supplies(){
         return $this->belongsToMany('App\Supply');
+    }
+
+    public function invoices(){
+        return $this->belongsToMany('App\Invoice');
     }
 
 }

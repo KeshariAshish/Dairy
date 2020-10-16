@@ -20,17 +20,17 @@ class AdminsController extends Controller
 
             $productions = Production::select('productions.*')->where('date', '>=', Carbon::now()->startOfMonth()->subMonth()->toDateString());
 
-            $users = User::orderBy('id', 'desc')->latest()->limit(2)->get();
+            $users = User::orderBy('id', 'desc')->latest()->limit(10)->get();
 
             $invoices = Invoice::all();
 
-            $supplies = Supply::all();
+
 
             $supplies = Supply::select('supplies.*', 'users.name',  'products.name as product_name')
                         ->join('users', 'users.id', '=', 'supplies.user_id')
                         ->join('products', 'products.id', '=', 'supplies.product_id')
                         ->orderBy('supplies.id','desc')
-                        ->whereMonth('supplies.date', '>=', Carbon::now()
+                        ->where('supplies.created_at', '>=', Carbon::now()
                         ->startOfMonth()->subMonth()->toDateString())
                         ->latest()->limit(10)
                         ->get();

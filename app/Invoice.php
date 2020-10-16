@@ -16,7 +16,18 @@ class Invoice extends Model
         'due_amount',
         'is_paid',
         'payment_mode',
-        'payment_received_by',
+        // 'payment_received_by',
         'created_by'
     ];
+
+    public function product(){
+        return $this->belongsToMany('App\Product');
+    }
+
+    public function user(){
+        return $this->belongsToMany('App\User');
+    }
+
 }
+
+
