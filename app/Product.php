@@ -12,7 +12,7 @@ class Product extends Model
         'price',
         'unit',
         'is_active',
-        //'user_id'
+        'user_id'
     ];
 
     public function orders(){

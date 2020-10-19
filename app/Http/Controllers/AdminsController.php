@@ -6,12 +6,15 @@ use App\Production;
 use App\Invoice;
 use App\Supply;
 use App\Product;
+use PDF;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+
 class AdminsController extends Controller
 {
     public function index(User $users, Production $productions, Invoice $invoices, Supply $supplies, Product $products){
@@ -105,13 +108,22 @@ class AdminsController extends Controller
 
 
 
-            return redirect()->route('admin.read');
+            return view('admin.read');
     }
 
     public function read(User $users){
         $users = User::all();
         return view('admin.read', ['users'=>$users]);
     }
+
+    public function createPDF() {
+
+        $users = User::all();
+
+        view()->share('users',$users);
+        $pdf = PDF::loadView('admin.pdf', $users);
+        return $pdf->download('Users.pdf');
+      }
 
     public function edit(Request $request, $id){
         $user = User::find($id);
@@ -154,8 +166,8 @@ class AdminsController extends Controller
 
        //dd($inputs);
         $user->update();
-
-        return redirect()->route('admin.read');
+        request()->session()->flash('message', 'User was updated');
+        return back();
     }
 
 

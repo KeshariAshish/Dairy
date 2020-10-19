@@ -3,7 +3,9 @@
     @section('content')
 
         <h1>{{__('admin-master.create_product')}}</h1>
-
+        @if(Session::has('message'))
+            <div class="alert alert-success">{{session('message')}}</div>
+        @endif
 
         <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -36,7 +38,7 @@
                     <select class="form-control" id="user_id" name="user_id" required>
                         @foreach($users as $user)
                             <option value = "{{$user->id}}">
-                            {{$user->name}}
+                               {{ $user->name }}
                             </option>
                         @endforeach
                     </select>

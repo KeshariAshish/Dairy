@@ -21,6 +21,7 @@ Route::delete('/admin/read/{user}/destroy', 'AdminsController@destroy')->name('a
 Route::get('/admin/edit/{id}' , 'AdminsController@edit')->name('admin.edit');
 Route::patch('/admin/update/{id}' , 'AdminsController@update')->name('admin.update');
 Route::delete('/admin/delete', 'AdminsController@deleteUsers')->name('admin.delete');
+Route::get('/admin/pdf','AdminsController@createPDF')->name('admin.pdf');
 
 
 Route::get('/admin/product/create', 'ProductsController@create')->name('product.create');
@@ -88,6 +89,7 @@ Route::get('/admin/invoice/read', 'InvoiceController@read')->name('invoice.read'
 Route::delete('/admin/invoice/read/{invoice}/destroy', 'InvoiceController@destroy')->name('invoice.destroy');
 Route::get('/admin/invoice/edit/{id}' , 'InvoiceController@edit')->name('invoice.edit');
 Route::patch('/admin/invoice/update/{id}' , 'InvoiceController@update')->name('invoice.update');
+Route::get('/admin/invoice/pdf','InvoiceController@createPDF')->name('invoice.pdf');
 // Route::delete('/admin/supply/delete', 'SupplyController@deleteSupply')->name('invoice.delete');
 
 

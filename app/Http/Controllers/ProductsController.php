@@ -45,21 +45,21 @@ class ProductsController extends Controller
             'unit'=>'required',
             'user_id'=>'',
         ]);
-
+        $users = User::all();
         // Product::create([
         //     'name'=> $request['name'],
         //     'price'=> $request['price'],
         //     'unit'=> $request['unit']
         // ]);
-        $product = new Product;
-        $product->name = $data['name'];
-        $product->price = $data['price'];
-        $product->unit = $data['unit'];
-        $product->user_id = $data['user_id'];
+        $products = new Product;
+        $products->name = $data['name'];
+        $products->price = $data['price'];
+        $products->unit = $data['unit'];
+        $products->user_id = $data['user_id'];
 
-        $product->save();
-
-        return redirect()->route('admin.index')->withSuccess("You have created product");
+        $products->save();
+        request()->session()->flash('message', 'Product was created');
+        return back();
     }
 
     /**
@@ -112,8 +112,8 @@ class ProductsController extends Controller
 
         //dd($inputs);
        $product->update();
-
-        return redirect()->route('admin.read');
+       request()->session()->flash('message', 'Product was updated');
+        return back();
     }
 
     /**
@@ -131,12 +131,10 @@ class ProductsController extends Controller
     }
 
     public function read(Product $products){
-        $users = User::all();
-        $products = Product::all();
         $products = Product::select('products.*', 'products.name', 'users.name as user_name')
                     ->join('users', 'users.id', '=', 'products.user_id')
                     ->get();
-        return view('admin.product.read', ['products'=>$products, 'users'=>$users]);
+        return view('admin.product.read',['products'=>$products]);
     }
 
     public function deleteProduct(Request $request, Product $products){

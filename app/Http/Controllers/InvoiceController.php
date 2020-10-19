@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Invoice;
 use App\Product;
+use PDF;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class InvoiceController extends Controller
 {
@@ -98,10 +100,10 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoices, $id)
     {
-        $users = User::all();
+        $user = User::all();
         $products = Product::all();
-        $invoices = Invoice::find($id);
-        return view('admin.invoice.edit',['invoices'=>$invoices, 'users'=>$users, 'products'=>$products]);
+        $invoice = Invoice::find($id);
+        return view('admin.invoice.edit',['invoice'=>$invoice, 'user'=>$user, 'products'=>$products]);
     }
 
     /**
@@ -147,7 +149,7 @@ class InvoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoice $invoices, $id)
+    public function destroy($id)
     {
         $invoices = Invoice::find($id);
         $invoices->delete();
@@ -164,4 +166,16 @@ class InvoiceController extends Controller
         return view('admin.invoice.read',['invoices'=>$invoices]);
 
     }
+
+    public function createPDF() {
+
+        $invoices = Invoice::select('invoices.*', 'users.name',  'products.name as product_name')
+                    ->join('users', 'users.id', '=', 'invoices.user_id')
+                    ->join('products', 'products.id', '=', 'invoices.product_id')
+                    ->get();
+
+        view()->share('invoices',$invoices);
+        $pdf = PDF::loadView('admin.invoice.pdf', $invoices);
+        return $pdf->download('Invoice.pdf');
+      }
 }
