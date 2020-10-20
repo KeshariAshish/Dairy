@@ -85,7 +85,7 @@
 
             <div>
                 <button class="btn btn-primary mt-4" type="submit">{{__('admin-master.submit')}}</button>
-                <a href="{{ route('admin.read') }}"><button class="btn btn-success mt-4 ml-2">{{__('admin-master.cancel')}}</button></a>
+                <a href="{{ route('admin.read') }}" class="btn btn-success mt-4 mr-2">Cancel</button></a>
             </div>
         </form>
     @endsection

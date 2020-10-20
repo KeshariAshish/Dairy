@@ -23,7 +23,7 @@ class ProductionController extends Controller
         $products = Product::all();
         $productions = Production::select('productions.*','products.name as product_name' )
         ->join('products', 'products.id', '=', 'productions.product_id')
-        ->get();;
+        ->get();
         return view('admin.production.read',['productions'=> $productions, 'products'=> $products]);
     }
 
@@ -60,6 +60,7 @@ class ProductionController extends Controller
                 'date'=>'required'
             ]);
 
+
             Production::create([
                 'product_id'=>          $request['product_id'],
                 'slot'=>                $request['slot'],
@@ -72,8 +73,8 @@ class ProductionController extends Controller
             ]);
             }
 
-
-            return redirect()->route('production.read',['productions'=> $productions]);
+            request()->session()->flash('message', 'Production is created successfully');
+            return back();
     }
 
     /**

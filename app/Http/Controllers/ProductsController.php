@@ -58,7 +58,7 @@ class ProductsController extends Controller
         $products->user_id = $data['user_id'];
 
         $products->save();
-        request()->session()->flash('message', 'Product was created');
+        request()->session()->flash('message', 'Product is created successfully');
         return back();
     }
 

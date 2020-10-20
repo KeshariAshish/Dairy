@@ -50,20 +50,20 @@
                         <td>{{ $supply->created_by }}</td>
                         <td>{{ $supply->created_at->format(date('d-m-Y')) }}</td>
                         <td>{{ $supply->updated_at->format(date('d-m-Y')) }}</td>
-                        <td style="width: 90px">
+                        <td style="width: 100px">
                             <div class="row">
                                 <div class="col">
                                     <form action="{{route('supply.destroy', $supply->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="fa fa-trash-o" style="border: none; color: red; background: none;"></button>
+                                        <button class="fa fa-trash-o fa-2x" style="border: none; color: red; background: none;"></button>
                                     </form>
                                 </div>
 
 
                                 <div class="col">
                                     <a href="{{ route('supply.edit', $supply->id) }}">
-                                        <button class="fa fa-pencil" style="border: none; color: green; background: none;" aria-hidden="true">
+                                        <button class="fa fa-pencil fa-2x" style="border: none; color: green; background: none;" aria-hidden="true">
                                         </button>
                                     <a>
                                 </div>

@@ -116,7 +116,7 @@ class AdminsController extends Controller
         return view('admin.read', ['users'=>$users]);
     }
 
-    public function createPDF() {
+    public function usersPDF() {
 
         $users = User::all();
 

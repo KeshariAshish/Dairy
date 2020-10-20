@@ -25,7 +25,7 @@ class CreateInvoicesTable extends Migration
             $table->tinyInteger('is_paid')->default(0);
             $table->string('payment_mode');
             $table->index('payment_received_by');
-            $table->foreignId('payment_received_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('payment_received_by')->references('id')->on('users')->onDelete('cascade')->nullable();
             $table->index('created_by');
             $table->foreignId('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

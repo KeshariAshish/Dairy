@@ -69,19 +69,19 @@
 
                             <td>{{ $production->created_at->format(date('d-m-Y')) }}</td>
 
-                            <td>
+                            <td style="width: 100px;">
                                 <div class="row">
                                     @if(auth()->user()->is_Admin==1)
                                         <div class="col">
                                             <form action="{{route('production.destroy', $production->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="fa fa-trash-o" style="border: none; color: red; background: none;"></button>
+                                                <button class="fa fa-trash-o fa-2x" style="border: none; color: red; background: none;"></button>
                                             </form>
                                         </div>
                                         <div class="col">
                                             <a href="{{ route('production.edit', $production->id) }}">
-                                                <button class="fa fa-pencil" style="border: none; color: green; background: none;" aria-hidden="true">
+                                                <button class="fa fa-pencil fa-2x" style="border: none; color: green; background: none;" aria-hidden="true">
                                                 </button>
                                             <a>
                                         </div>

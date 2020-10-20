@@ -21,7 +21,7 @@ Route::delete('/admin/read/{user}/destroy', 'AdminsController@destroy')->name('a
 Route::get('/admin/edit/{id}' , 'AdminsController@edit')->name('admin.edit');
 Route::patch('/admin/update/{id}' , 'AdminsController@update')->name('admin.update');
 Route::delete('/admin/delete', 'AdminsController@deleteUsers')->name('admin.delete');
-Route::get('/admin/pdf','AdminsController@createPDF')->name('admin.pdf');
+Route::get('/admin/pdf','AdminsController@usersPDF')->name('admin.pdf');
 
 
 Route::get('/admin/product/create', 'ProductsController@create')->name('product.create');

@@ -6,6 +6,8 @@ use App\User;
 use App\Invoice;
 use App\Product;
 use PDF;
+use DB;
+use App\Supply;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -59,10 +61,11 @@ class InvoiceController extends Controller
             // 'payment_received_by'=>'required',
             'created_by'=>''
         ]);
-       //dd($request);
-        $users = User::all();
-        $products = Product::all();
-
+      // dd($request);
+      $products = Product::select( 'products.*')
+                            ->join('users', 'users.id', '=', 'products.user_id')
+                            ->where('products.id', '=', $request->get('id'))
+                            ->where('products.user_id', '=', $request->get('user_id'));
         Invoice::create([
             'user_id'               =>  $request['user_id'],
             'product_id'            =>  $request['product_id'],

@@ -19,7 +19,7 @@
             <div class="form-group">
                 <input type="submit" class="btn-primary">
             </div> --}}
-            <div class="d-flex justify-content-end mb-4">
+            <div class="d-flex justify-content-end">
                 <a class="btn btn-primary" href="{{ route('admin.pdf') }}">Export to PDF</a>
             </div>
             <div class="table table-responsive">
@@ -86,17 +86,17 @@
                                 <td>{{ $user->created_at->format(date('d-m-Y')) }}</td>
                                 <td>{{ $user->updated_at->format(date('d-m-Y')) }}</td>
                                 <td>
-                                    <div class="row" style="width: 100px;">
+                                    <div class="row" style="width: 120px;">
                                         <div class="col">
                                             <form action="{{route('admin.destroy', $user->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="fa fa-trash-o" style="border: none; color: red; background: none;"></button>
+                                                <button class="fa fa-trash-o fa-2x" style="border: none; color: red; background: none;"></button>
                                             </form>
                                         </div>
                                         <div class="col">
                                             <a href="{{ route('admin.edit', $user->id) }}">
-                                                <button class="fa fa-pencil" style="border: none; color: green; background: none;" aria-hidden="true">
+                                                <button class="fa fa-pencil fa-2x" style="border: none; color: green; background: none;" aria-hidden="true">
                                                 </button>
                                             <a>
                                         </div>

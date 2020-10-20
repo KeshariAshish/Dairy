@@ -4,7 +4,7 @@
 
         <h1>{{__('admin-master.create_production')}}</h1>
         @if(Session::has('message'))
-            <div class="alert alert-danger">{{session('message')}}</div>
+            <div class="alert alert-success">{{session('message')}}</div>
         @endif
 
         <form action="{{route('production.store')}}" method="post" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                 </div>
                 <div>
                     <button class="btn btn-primary ml-3" type="submit">{{__('admin-master.create')}}</button>
-                    <a href="{{ route('production.read' )}}" class="btn btn-success">{{__('admin-master.cancel')}}</a>
+                    <a href="{{ route('production.read') }}" class="btn btn-success" style="margin-top: 0px; margin-left: 5px;">Cancel</a>
                 </div>
         </form>
     @endsection

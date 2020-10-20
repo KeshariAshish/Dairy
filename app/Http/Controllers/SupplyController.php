@@ -40,7 +40,10 @@ class SupplyController extends Controller
     public function store(Request $request)
     {
          // dd(request()->all());
-         $supplies = Supply::where('date', '=', $request->get('date'))->where('slot', '=', $request->get('slot'))->first();
+         $supplies = Supply::where('date', '=', $request->get('date'))
+                            ->where('slot', '=', $request->get('slot'))
+                            ->where('user_id', '=', $request->get('user_id'))
+                            ->first();
          if($supplies === null){
             $supplies = request()->validate([
                 'user_id'=>'',
@@ -61,12 +64,12 @@ class SupplyController extends Controller
                 'created_by'=> auth()->user()->name
             ]);
 
-         }
+        }
 
 
 
-
-        return redirect()->route('admin.read')->withSuccess("You have created new stock");
+        request()->session()->flash('message', 'Supply is created successfully');
+        return back();
     }
 
     /**

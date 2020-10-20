@@ -45,6 +45,7 @@
                 </div>
                 <div>
                     <button class="btn btn-primary" style="margin-top: 32px" type="submit">{{__('admin-master.create')}}</button>
+                    <a href="{{ route('product.read') }}" class="btn btn-success" style="margin-top: 32px; margin-left: 5px;">Cancel</a>
                 </div>
             </div>
         </form>
